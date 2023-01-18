@@ -1,20 +1,15 @@
-
 let playerScore = 0;
 let compScore = 0;
 
-   
-  
-  const pick = ["rock", "paper", "scissors"];
+const pick = ["rock", "paper", "scissors"];
 
-
-   
    function playRound(playerSelection, computerSelection) {
 
       if(playerSelection == computerSelection){
          return  "It's a draw! Try Again.";
       }
    
-        if(playerSelection == "rock") {
+      if(playerSelection == "rock") {
          if(computerSelection == "paper"){
             compScore ++;
             return "You Lose! Paper beats Rock.";
@@ -44,7 +39,7 @@ let compScore = 0;
           }
         }
        
-     }
+   }
      
      for (let round = 1; round < 6; round++) {
       while(compScore < 3 && playerScore < 3 && round < 6){
@@ -55,12 +50,16 @@ let compScore = 0;
          function getComputerChoice() {
             let choice = pick[Math.floor(Math.random() * pick.length)];
             return choice;
-}
+         }
 
             console.log(getComputerChoice());
             let computerSelection = getComputerChoice();
 
-         
+         if (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors"){
+            console.log("You didn't make a choice");
+         }else{
+            console.log("You chose" + " " + computerSelection);
+         }
           
         console.log("\n" + playRound(playerSelection, computerSelection));
 
@@ -72,18 +71,15 @@ let compScore = 0;
    }
       
 
-      
-   
-
-   if (playerScore > compScore){
+      if (playerScore > compScore){
       console.log("*******************\nYou win!\n*******************");
-  }
-  else if (playerScore < compScore){
+      }
+      else if (playerScore < compScore){
       console.log("*******************\nComputer wins!\n*******************");
-  }
-  else {
+      }
+      else {
       console.log("*******************\nIt's a gremlin tie!\n*******************");
-  }
+      }
   
 
 
