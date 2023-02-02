@@ -1,9 +1,11 @@
 let playerScore = 0;
 let compScore = 0;
-let round = 1;
+let round = 1; 
 let roundLimit = 5;
 
+
 const pick = ["rock", "paper", "scissors"];
+const playerSelection = ["rock", "paper", "scissors"];
 
 introGame()
 
@@ -52,21 +54,33 @@ function introGame() {
           }
       }
 
-      round++
-       
    }
 
    function calFinalScore() {
+
+      const div = document.createElement('div');
+      div.classList.add('results');
+
+      
+      container.appendChild(div);
+
               
       if (playerScore > compScore){
          console.log("*******************\nYou win!\n*******************");
+         div.innerHTML = "*******************\nYou win!\n*******************";
       }
       else if (playerScore < compScore){
          console.log("*******************\nComputer wins!\n*******************");
+      div.innerHTML = "*******************\nComputer wins!\n*******************";
+
       }
       else {
          console.log("*******************\nIt's a gremlin tie!\n*******************");
+      div.innerHTML = "*******************\nIt's a gremlin tie!\n*******************";
+
       }
+
+     
    }
 
    function showStartButton() {
@@ -100,12 +114,19 @@ function introGame() {
          showGameButtons()
 
          console.log("*******************\n Click on any of the buttons to play !!\n*******************");
+        
          playGameButton()
+           
+         
+         
+         
 
       })
 
 
    }
+
+   
 
    function showGameButtons() {
       const container = document.querySelector("#container");
@@ -139,92 +160,128 @@ function introGame() {
    }
 
    function playGameButton() {
-      const rockButton = document.querySelector('.rock')
+      const rockButton = document.querySelector('.rock');
+
+      const paperButton = document.querySelector('.paper');
+
+      const scissorsButton = document.querySelector('.scissors');
+
+      const container = document.querySelector("#container");
+
+      const buttons = document.querySelector('.buttons');
 
 
-      if(compScore < 3 && playerScore < 3 && round < 6) { 
-         console.log("*******************\n Round "+round+" !!\n*******************");
+      const div = document.createElement('div');
+      div.classList.add('scores');
 
+      
+      
+
+      div.innerHTML = "\nThe score is" + " " + playerScore + " "+ "Player," + " " + compScore + " " + "Computer\n" ;
+      
+      container.appendChild(div);
+
+     
+      
+      console.log("\nThe score is" + " " + playerScore + " "+ "Player," + " " + compScore + " " + "Computer\n" );
+
+      
+      
+     
          rockButton.addEventListener("click", function() {
             rockButton.textContent.toLocaleLowerCase()
+            
+            if(compScore < 3 && playerScore < 3 && round < 6) { 
+               console.log("*******************\n Round "+ round +" !!\n*******************");
             console.log(playRound(rockButton.textContent.toLocaleLowerCase(), getComputerChoice()))
-         })
 
-      } else {
-         calFinalScore()
-      }
+         
+
+               console.log("\nThe score is" + " " + playerScore + " "+ "Player," + " " + compScore + " " + "Computer\n" );
+               round++
+               div.innerHTML = "\nThe score is" + " " + playerScore + " "+ "Player," + " " + compScore + " " + "Computer\n" ;
+         
+               container.appendChild(div); 
+          
+         }
+         else  {
+            calFinalScore();
+   
+            buttons.removeChild(rockButton);
+            buttons.removeChild(paperButton);
+            buttons.removeChild(scissorsButton);
+           
+         }
+         });
+
+
+         paperButton.addEventListener("click", function() {
+            paperButton.textContent.toLocaleLowerCase()
+            
+            if(compScore < 3 && playerScore < 3 && round < 6) { 
+            console.log("*******************\n Round "+ round +" !!\n*******************");
+
+         
+               console.log(playRound(paperButton.textContent.toLocaleLowerCase(), getComputerChoice()))
+               console.log("\nThe score is" + " " + playerScore + " "+ "Player," + " " + compScore + " " + "Computer\n" );
+                  round++
+                  div.innerHTML = "\nThe score is" + " " + playerScore + " "+ "Player," + " " + compScore + " " + "Computer\n" ;
+            
+            container.appendChild(div); 
+             
+            }
+               else {
+               calFinalScore();
+               buttons.removeChild(rockButton);
+               buttons.removeChild(paperButton);
+               buttons.removeChild(scissorsButton);
+              
+            }
+         });
+
+         
+
+         
+         scissorsButton.addEventListener("click", function() {
+            scissorsButton.textContent.toLocaleLowerCase();
+
+            if(compScore < 3 && playerScore < 3 && round < 6) { 
+            console.log("*******************\n Round "+ round +" !!\n*******************");
+
+            console.log(playRound(scissorsButton.textContent.toLocaleLowerCase(), getComputerChoice()));
+
+
+               console.log("\nThe score is" + " " + playerScore + " "+ "Player," + " " + compScore + " " + "Computer\n" );
+               round++
+               div.innerHTML = "\nThe score is" + " " + playerScore + " "+ "Player," + " " + compScore + " " + "Computer\n" ;
+         
+               container.appendChild(div);
+   
+            }
+            else {
+               calFinalScore();
+               buttons.removeChild(rockButton);
+               buttons.removeChild(paperButton);
+               buttons.removeChild(scissorsButton);
+              
+            }
+         });
+
+        
+
+         
+ 
+
+    
+         
 
    }
-   
+
   
 
-   
-   
-     
-   //   for (let round = 1; round < 6; round++) {
-      // while(compScore < 3 && playerScore < 3 && round < 6){
-         // console.log("** ROUND" + " " + round + " **\n");
-
-         //    playerSelection = [rockButton , paperButton, scissorsButton];
-         
-         // rockButton.addEventListener('click', () => {
-         //    playerSelection = rockButton.textContent.toLowerCase();
-         //    // playRound(playerSelection, computerSelection);
-      
-         //    console.log(playRound(playerSelection, computerSelection));
-      
-         // });
-
-         // paperButton.addEventListener('click', () => {
-         //    playerSelection = paperButton.textContent.toLowerCase();
-         //    playRound(playerSelection, computerSelection);
-      
-         //    console.log(playerSelection);
-         // });
-      
-
-         // scissorsButton.addEventListener('click', () => {
-         //    playerSelection = scissorsButton.textContent.toLowerCase();
-         //    playRound(playerSelection, computerSelection);
-      
-         //    console.log(playerSelection);
-      
-         // });
-
-
-
-
-
-      //       console.log(getComputerChoice());
-      //       let computerSelection = getComputerChoice();
-
-      //    if (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors"){
-      //       console.log("You didn't make a choice");
-      //    }else{
-      //       console.log("You chose" + " " + computerSelection);
-      //    }
-          
-      // //  console.log("\n" + playRound(playerSelection, computerSelection));
-
-      //    console.log("\nThe score is" + " " + playerScore + " "+ "Player," + " " + compScore + " " + "Computer\n" );
-
-         
-           
-      // }  
-   // }
-      
-
-      // if (playerScore > compScore){
-      // console.log("*******************\nYou win!\n*******************");
-      // }
-      // else if (playerScore < compScore){
-      // console.log("*******************\nComputer wins!\n*******************");
-      // }
-      // else {
-      // console.log("*******************\nIt's a gremlin tie!\n*******************");
-      // }
   
 
+  
 
 
  
