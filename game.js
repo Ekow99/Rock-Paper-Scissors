@@ -11,6 +11,18 @@ introGame()
 
 
 function introGame() {
+   const container = document.querySelector("#container");
+
+   const div = document.createElement('div');
+   div.classList.add('title');
+   container.appendChild(div);
+
+   const div2 = document.createElement('div');
+   div2.classList.add('subtitle');
+   container.appendChild(div2);
+
+
+   
    console.log("*******************\nWelcome To Ekow's Paper - Rock - Scissors Game!\n*******************");
 
    console.log("*******************\nPlease Click on the Start Button to Begin !!\n*******************");
@@ -64,10 +76,14 @@ function introGame() {
       
       container.appendChild(div);
 
+      div.setAttribute('style','font-family:"Poppins", sans-serif;');
+
+
               
       if (playerScore > compScore){
          console.log("*******************\nYou win!\n*******************");
          div.innerHTML = "*******************\nYou win!\n*******************";
+         
       }
       else if (playerScore < compScore){
          console.log("*******************\nComputer wins!\n*******************");
@@ -91,14 +107,16 @@ function introGame() {
       const div = document.createElement('div');
       div.classList.add('buttons');
       container.appendChild(div);
+
+      
       
       // query the button element by class
       const buttons = document.querySelector('.buttons');
    
       // creates the start button 
-      const startButton = document.createElement('button');
-      startButton.classList.add("start");
-      startButton.textContent = "Start Game";
+      const startButton = document.querySelector(".start");
+      // startButton.classList.add("start");
+      // startButton.innerHTML = '<i class="li li-user"></i> START' ;
 
       // appends start button to buttons div element
       buttons.appendChild(startButton);
@@ -134,24 +152,43 @@ function introGame() {
       const div = document.createElement('div');
       div.classList.add('buttons');
       container.appendChild(div);
+      container.setAttribute('style', 'display:flex; flex-wrap: wrap;')
+     
    
       const buttons = document.querySelector('.buttons');
-   
+
+      buttons.setAttribute('style','width:100;')
+      
+      // const rockButton = document.querySelector('.rock');
+      
       const rockButton = document.createElement('button');
       rockButton.classList.add("rock");
-      rockButton.textContent = "Rock";
+      rockButton.innerHTML = '<i class="fa-solid fa-hand-back-fist fa-beat-fade fa-5x"></i>Rock';
+      rockButton.setAttribute('style', 'padding:20px; margin:30px; font-family:"Poppins", sans-serif;');
+      rockButton.classList.add('btn', 'btn-primary','border', 'rounded-5','animate__animated','animate__flipInX');
+
+      // const paperButton = document.querySelector('.paper');
    
       const paperButton = document.createElement('button');
       paperButton.classList.add("paper");
-      paperButton.textContent = "Paper";
-   
+      paperButton.innerHTML = '<i class="fa-solid fa-note-sticky fa-beat-fade fa-5x"></i>Paper';
+      paperButton.style.margin = '30px';
+      paperButton.setAttribute('style', 'padding:20px; margin:30px; font-family:"Poppins", sans-serif;');
+      paperButton.classList.add('btn', 'btn-primary','border', 'rounded-5','animate__animated','animate__flipInX');
+
+      // const scissorsButton = document.querySelector('.scissors');
+      
       const scissorsButton = document.createElement('button');
       scissorsButton.classList.add("scissors");
-      scissorsButton.textContent = "Scissors";
+      scissorsButton.innerHTML = '<i class="fa-solid fa-scissors fa-beat-fade fa-5x"></i></i>Scissors';
+      scissorsButton.setAttribute('style', 'padding:20px; margin:30px; font-family:"Poppins", sans-serif;');
+      scissorsButton.classList.add('btn', 'btn-primary','border', 'rounded-5','animate__animated','animate__flipInX');
      
       buttons.appendChild(rockButton);
       buttons.appendChild(paperButton);
       buttons.appendChild(scissorsButton);
+
+      
    }
 
    function getComputerChoice() {
@@ -178,7 +215,8 @@ function introGame() {
       
 
       div.innerHTML = "\nThe score is" + " " + playerScore + " "+ "Player," + " " + compScore + " " + "Computer\n" ;
-      
+      div.setAttribute('style','font-family:"Poppins", sans-serif; width:100%; display:flex; justify-content:center;');
+
       container.appendChild(div);
 
      
