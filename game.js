@@ -5,7 +5,6 @@ let roundLimit = 5;
 
 
 const pick = ["rock", "paper", "scissors"];
-const playerSelection = ["rock", "paper", "scissors"];
 
 introGame()
 
@@ -15,11 +14,13 @@ function introGame() {
 
    const div = document.createElement('div');
    div.classList.add('title');
-   container.appendChild(div);
+   // div.textContent = "*******************\nWelcome To Ekow's Paper - Rock - Scissors Game!\n*******************";
+   // container.appendChild(div);
 
    const div2 = document.createElement('div');
    div2.classList.add('subtitle');
-   container.appendChild(div2);
+   // div2.textContent = "*******************\nPlease Click on the Start Button to Begin !!\n*******************";
+   // container.appendChild(div2);
 
 
    
@@ -106,6 +107,7 @@ function introGame() {
       // creates a button div
       const div = document.createElement('div');
       div.classList.add('buttons');
+      // div.setAttribute('style', 'display:flex;');
       container.appendChild(div);
 
       
@@ -207,17 +209,124 @@ function introGame() {
 
       const buttons = document.querySelector('.buttons');
 
+      const player = document.querySelector('.player-score');
 
-      const div = document.createElement('div');
-      div.classList.add('scores');
+      const computer = document.querySelector('.computer-score');
+
+      player.setAttribute('style', 'margin:20px;')
+
+      computer.setAttribute('style', 'margin:20px;')
+
+      const scores = document.createElement('div');
+      scores.classList.add('scores');
+
+     
+
+
+      const flipCard = document.createElement("div");
+      flipCard.classList.add("flip-card");
+      flipCard.setAttribute('style', 'background-color:black; display:flex; justify-content:center; flex-direction:row; font-family:"Poppins", sans-serif; width:100%;');
+
+      
+
+      const topDivPlayer = document.createElement("div");
+      topDivPlayer.classList.add("top");
+
+      topDivPlayer.textContent = playerScore ;
+
+      const bottomDivPlayer = document.createElement("div");
+      bottomDivPlayer.classList.add("bottom");
+      bottomDivPlayer.textContent = playerScore ;
+
+      const topFlipPlayer = document.createElement("div")
+      topFlipPlayer.classList.add("top-flip")
+      topFlipPlayer.textContent = playerScore ;
+      
+      const bottomFlipPlayer = document.createElement("div")
+      bottomFlipPlayer.classList.add("bottom-flip")
+      bottomFlipPlayer.textContent = playerScore ;
+
+      const topDivComputer = document.createElement("div");
+      topDivComputer.classList.add("top");
+
+      topDivComputer.textContent =' ' + compScore ;
+
+      const bottomDivComputer = document.createElement("div");
+      bottomDivComputer.classList.add("bottom");
+      bottomDivComputer.textContent =' ' + compScore ;
+
+      const topFlipComputer = document.createElement("div")
+      topFlipComputer.classList.add("top-flip")
+      topFlipComputer.textContent =' ' + compScore ;
+      
+      const bottomFlipComputer = document.createElement("div")
+      bottomFlipComputer.classList.add("bottom-flip")
+      // bottomFlipComputer.textContent =' ' + compScore ;
+
+      // const topDivComputer = document.createElement("div");
+      // topDivComputer.classList.add("top");
+
+      // topDivComputer.textContent = playerScore + ':' + compScore ;
+
+      // const bottomDivComputer = document.createElement("div");
+      // bottomDivComputer.classList.add("bottom");
+      // bottomDivComputer.textContent = playerScore + ':' + compScore ;
+
+      // const topFlipComputer = document.createElement("div")
+      // topFlipComputer.classList.add("top-flip")
+      // topFlipComputer.textContent = playerScore + ':' + compScore ;
+      
+      // const bottomFlipComputer = document.createElement("div")
+      // bottomFlipComputer.classList.add("bottom-flip")
+      // bottomFlipComputer.textContent = playerScore + ':' + compScore ;
+
+      
+
 
       
       
 
-      div.innerHTML = "\nThe score is" + " " + playerScore + " "+ "Player," + " " + compScore + " " + "Computer\n" ;
-      div.setAttribute('style','font-family:"Poppins", sans-serif; width:100%; display:flex; justify-content:center;');
+      topFlipPlayer.addEventListener("animationstart", e => {
+         topDivPlayer.textContent = playerScore ;
+          })
+          topFlipPlayer.addEventListener("animationend", e => {
+            topFlipPlayer.remove()
+          })
+          bottomFlipPlayer.addEventListener("animationend", e => {
+            bottomDivPlayer.textContent = playerScore ;
+            bottomFlipPlayer.remove()
+          })
+         //  player.append(topFlipPlayer, bottomFlipPlayer)
 
-      container.appendChild(div);
+          topFlipComputer.addEventListener("animationstart", e => {
+            topDivComputer.textContent = ' ' + compScore ;
+             })
+             topFlipComputer.addEventListener("animationend", e => {
+               topFlipComputer.remove()
+             })
+             bottomFlipComputer.addEventListener("animationend", e => {
+               bottomDivComputer.textContent =' ' + compScore ;
+               bottomFlipComputer.remove()
+             })
+            //  computer.append(topFlipComputer, bottomFlipComputer)
+     
+      
+      
+      
+      
+
+            scores.innerHTML = "\nThe score is" + " " + playerScore + " "+ "Player," + " " + compScore + " " + "Computer\n" ;
+            scores.setAttribute('style','font-family:"Poppins", sans-serif; width:100%; display:flex; justify-content:center; flex-wrap:wrap;');
+
+      container.appendChild(scores);
+      scores.appendChild(flipCard);
+      flipCard.appendChild(player);
+      flipCard.appendChild(computer);
+      player.appendChild(topDivPlayer);
+      player.appendChild(bottomDivPlayer);
+      
+      computer.appendChild(topDivComputer);
+      computer.appendChild(bottomDivComputer);
 
      
       
@@ -240,6 +349,39 @@ function introGame() {
                div.innerHTML = "\nThe score is" + " " + playerScore + " "+ "Player," + " " + compScore + " " + "Computer\n" ;
          
                container.appendChild(div); 
+      
+               
+
+      // topDiv.innerHTML = playerScore + ':' + compScore ;
+      // bottomDiv.innerHTML = playerScore + ':' + compScore ;
+               
+      topFlipPlayer.addEventListener("animationstart", e => {
+         topDivPlayer.textContent = playerScore ;
+          })
+          topFlipPlayer.addEventListener("animationend", e => {
+            topFlipPlayer.remove()
+          })
+          bottomFlipPlayer.addEventListener("animationend", e => {
+            bottomDivPlayer.textContent = playerScore ;
+            bottomFlipPlayer.remove()
+          })
+          player.append(topFlipPlayer, bottomFlipPlayer)
+
+          topFlipComputer.addEventListener("animationstart", e => {
+            topDivComputer.textContent = ' ' + compScore ;
+             })
+             topFlipComputer.addEventListener("animationend", e => {
+               topFlipComputer.remove()
+             })
+             bottomFlipComputer.addEventListener("animationend", e => {
+               bottomDivComputer.textContent =' ' + compScore ;
+               bottomFlipComputer.remove()
+             })
+             computer.append(topFlipComputer, bottomFlipComputer)
+ 
+
+
+               
           
          }
          else  {
@@ -266,6 +408,35 @@ function introGame() {
                   div.innerHTML = "\nThe score is" + " " + playerScore + " "+ "Player," + " " + compScore + " " + "Computer\n" ;
             
             container.appendChild(div); 
+
+            
+
+      //       topDiv.textContent = playerScore + ':' + compScore ;
+      // bottomDiv.textContent = playerScore + ':' + compScore ;
+
+      topFlipPlayer.addEventListener("animationstart", e => {
+         topDivPlayer.textContent = playerScore ;
+          })
+          topFlipPlayer.addEventListener("animationend", e => {
+            topFlipPlayer.remove()
+          })
+          bottomFlipPlayer.addEventListener("animationend", e => {
+            bottomDivPlayer.textContent = playerScore ;
+            bottomFlipPlayer.remove()
+          })
+          player.append(topFlipPlayer, bottomFlipPlayer)
+
+          topFlipComputer.addEventListener("animationstart", e => {
+            topDivComputer.textContent = ' ' + compScore ;
+             })
+             topFlipComputer.addEventListener("animationend", e => {
+               topFlipComputer.remove()
+             })
+             bottomFlipComputer.addEventListener("animationend", e => {
+               bottomDivComputer.textContent =' ' + compScore ;
+               bottomFlipComputer.remove()
+             })
+             computer.append(topFlipComputer, bottomFlipComputer)
              
             }
                else {
@@ -294,7 +465,39 @@ function introGame() {
                div.innerHTML = "\nThe score is" + " " + playerScore + " "+ "Player," + " " + compScore + " " + "Computer\n" ;
          
                container.appendChild(div);
-   
+
+               
+
+               // topDiv.textContent = playerScore + ':' + compScore ;
+               // bottomDiv.textContent = playerScore + ':' + compScore ;
+
+               topFlipPlayer.addEventListener("animationstart", e => {
+                  topDivPlayer.textContent = playerScore ;
+                   })
+                   topFlipPlayer.addEventListener("animationend", e => {
+                     topFlipPlayer.remove()
+                   })
+                   bottomFlipPlayer.addEventListener("animationend", e => {
+                     bottomDivPlayer.textContent = playerScore ;
+                     bottomFlipPlayer.remove()
+                   })
+                   player.append(topFlipPlayer, bottomFlipPlayer)
+         
+                   topFlipComputer.addEventListener("animationstart", e => {
+                     topDivComputer.textContent = ' ' + compScore ;
+                      })
+                      topFlipComputer.addEventListener("animationend", e => {
+                        topFlipComputer.remove()
+                      })
+                      bottomFlipComputer.addEventListener("animationend", e => {
+                        bottomDivComputer.textContent =' ' + compScore ;
+                        bottomFlipComputer.remove()
+                      })
+                      computer.append(topFlipComputer, bottomFlipComputer)
+
+                   
+ 
+
             }
             else {
                calFinalScore();
